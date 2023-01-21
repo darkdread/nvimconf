@@ -1,4 +1,4 @@
-require("darkydread")
+require("darkdread")
 
 require('packer').startup(function(use)
     -- Packer can manage itself
