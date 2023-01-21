@@ -1,34 +1,46 @@
-local Plug = vim.fn['plug#']
+require("darkydread")
 
-vim.call('plug#begin')
+require('packer').startup(function(use)
+    -- Packer can manage itself
+    use 'wbthomason/packer.nvim'
 
-Plug('EdenEast/nightfox.nvim')
-Plug('neoclide/coc.nvim', { branch = 'release'})
-Plug('kyazdani42/nvim-web-devicons')
-Plug('kyazdani42/nvim-tree.lua')
-Plug('nvim-lua/plenary.nvim')
-Plug('nvim-telescope/telescope.nvim', { tag = '0.1.0' })
-Plug('APZelos/blamer.nvim')
-Plug('nvim-treesitter/nvim-treesitter', {['do'] = ':TSUpdate'})
-Plug('folke/tokyonight.nvim', { branch = 'main' })
-Plug('nvim-lualine/lualine.nvim')
-Plug('OmniSharp/omnisharp-vim')
-Plug('dense-analysis/ale')
+    -- Colorscheme
+    use 'EdenEast/nightfox.nvim'
 
-vim.g.OmniSharp_translate_cygwin_wsl = 1
+    use {
+        'nvim-tree/nvim-tree.lua',
+        requires = {
+            'nvim-tree/nvim-web-devicons', -- optional, for file icons
+        }
+    }
 
-vim.call('plug#end')
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+    }
 
-vim.cmd [[ set background=dark ]]
-vim.cmd [[ colorscheme nightfox ]]
+    -- LSP
+    use {
+        'VonHeikemen/lsp-zero.nvim',
+        requires = {
+            -- LSP Support
+            {'neovim/nvim-lspconfig'},
+            {'williamboman/mason.nvim'},
+            {'williamboman/mason-lspconfig.nvim'},
 
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.pastetoggle = '<F2>'
+            -- Autocompletion
+            {'hrsh7th/nvim-cmp'},
+            {'hrsh7th/cmp-buffer'},
+            {'hrsh7th/cmp-path'},
+            {'saadparwaiz1/cmp_luasnip'},
+            {'hrsh7th/cmp-nvim-lsp'},
+            {'hrsh7th/cmp-nvim-lua'},
+            {'hrsh7th/cmp-nvim-lsp-signature-help'},
 
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.softtabstop = 4
-vim.opt.expandtab = true
-vim.opt.smarttab = true
+            -- Snippets
+            {'L3MON4D3/LuaSnip'},
+            {'rafamadriz/friendly-snippets'},
+        }
+    }
+end)
 
