@@ -17,6 +17,10 @@ require('packer').startup(function(use)
     }
 
     use {
+        'nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'}
+    }
+
+    use {
         'nvim-tree/nvim-tree.lua',
         requires = {
             'nvim-tree/nvim-web-devicons', -- optional, for file icons
