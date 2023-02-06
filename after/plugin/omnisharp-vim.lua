@@ -1,6 +1,8 @@
 local api = vim.api
 local osGroup = api.nvim_create_augroup("OmniSharpVim", { clear=true })
 
+vim.g.OmniSharp_translate_cygwin_wsl = 1
+
 api.nvim_create_autocmd("FileType", {
     group = "OmniSharpVim",
     pattern = "cs",
